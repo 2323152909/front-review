@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" name="" id="inp" />
+    <script>
+      const inp = document.querySelector("#inp");
+      function debounce(fn, delay = 500, immediate = false) {
+        let timer = null;
+        let isInvoke = false;
+
+        const _debounce = function (...args) {
+          clearTimeout(timer);
+          if (immediate && !isInvoke) {
+            fn.apply(this, args);
+            isInvoke = true;
+          } else {
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              isInvoke = false;
+            }, delay);
+          }
+        };
+
+        // 取消功能
+        _debounce.cancel = function () {
+          if (timer) clearTimeout(timer);
+          isInvoke = false;
+          timer = null;
+        };
+
+        return _debounce;
+      }
+      function inputFunc(event) {
+        console.log("点击了按钮", this, event);
+      }
+      inp.oninput = debounce(inputFunc, 500, true);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app"></div>
+    <script src="./renders.js"></script>
+    <script>
+        // 1.通过h函数创建一个vnode
+        const vnode = h(
+            "div", {
+                class: "lhd",
+                id: "aaa",
+            }, [
+                h("h2", null, "当前计数：100"),
+                h("button", null, "+1"),
+                h(
+                    "button", {
+                        onclick: function() {
+                            alert("点击了我");
+                        },
+                    },
+                    "alert"
+                ),
+            ]
+        );
+
+        //   2.通过mount函数，将vnode挂载到div#app上
+        mount(vnode, document.querySelector("#app"));
+
+        // 3.创建一个新的vnode
+        const vnode1 = h(
+            "div", {
+                class: "coderlhd",
+                id: "aaa",
+            },
+            "哈哈哈哈"
+        );
+
+        patch(vnode, vnode1);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // let obj = {};
+    // console.dir(obj.prototype);
+    // console.log(obj.__proto__);
+    // console.dir(Object);
+    // console.log(obj.prototype == Object.prototype);
+
+    let arr = []
+    // arr.__proto__.show = function(){
+    //   console.log('this is arr __proto__');
+    // }
+    Array.prototype.show = function(){
+      console.log('this is Array prototype');
+    }
+    arr.show();
+    // Array.prototype.show();
+    console.dir(Object);
+    console.dir(arr);
+    console.log(arr.__proto__);
+    console.dir(Array);
+    console.dir(Array.prototype);
+    console.dir(Array.prototype.__proto__);
+    console.dir(Array.__proto__);
+    console.log(arr.__proto__ == Array.prototype);
+  </script>
+</body>
+</html>

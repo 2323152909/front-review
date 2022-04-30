@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" name="" id="inp" />
+    <script>
+      const inp = document.querySelector("#inp");
+      function throttle(
+        fn,
+        interval = 500,
+        { leading = true, trailing = false }
+      ) {
+        let lastTime = 0;
+        let timer = null;
+
+        const _throttle = function (...args) {
+          const nowTime = new Date().getTime();
+          if (!leading && !lastTime) lastTime = nowTime;
+          let mainTime = interval - (nowTime - lastTime);
+          if (mainTime <= 0) {
+            if (timer) {
+              clearTimeout(timer);
+              timer = null;
+            }
+            fn.apply(this, args);
+            lastTime = nowTime;
+            return;
+          }
+
+          if (trailing && !timer) {
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = null;
+              lastTime = 0;
+            }, mainTime);
+          }
+        };
+
+        return _throttle;
+      }
+
+      const inputFunc = function (event) {
+        console.log("触发了input事件", this, event);
+      };
+
+      inp.oninput = throttle(inputFunc, 2000, {
+        // leading: true,
+        trailing: true,
+      });
+    </script>
+  </body>
+</html>
