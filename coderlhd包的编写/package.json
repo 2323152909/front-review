@@ -1,11 +1,12 @@
 {
   "name": "coderlhd",
-  "version": "1.1.2",
-  "description": "新增防抖、节流、深拷贝、事件总线方法",
+  "version": "1.1.3",
+  "description": "新增防抖、节流、深拷贝、事件总线方法、json数据导出excel、二进制数据文件下载",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "type": "module",
   "repository": {
     "type": "git",
     "url": "https://github.com/2323152909"
@@ -19,7 +20,9 @@
     "deepClone",
     "eventBus",
     "promise",
-    "reactive"
+    "reactive",
+    "downloadFile",
+    "jsonToExcel"
   ],
   "author": "coderlhd",
   "license": "ISC"

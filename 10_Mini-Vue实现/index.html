@@ -1,40 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
+  <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Mini-Vue</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <div id="app"></div>
     <script src="./index.js"></script>
 
     <script>
-        const App = {
-            data: reactive({
-                counter: 0,
-            }),
-            render() {
-                return h("div", null, [
-                    h("h2", null, `当前计数${this.data.counter}`),
-                    h(
-                        "button", {
-                            onClick: () => {
-                                this.data.counter++;
-                            },
-                        },
-                        "+1"
-                    ),
-                ]);
-            },
-        };
+      const App = {
+        data: reactive({
+          counter: 0,
+        }),
+        render() {
+          return h("div", null, [
+            h("h2", null, `当前计数${this.data.counter}`),
+            h(
+              "button",
+              {
+                onClick: () => {
+                  this.data.counter++;
+                },
+              },
+              "+1"
+            ),
+          ]);
+        },
+      };
 
-        const app = createApp(App);
-        app.mount("#app");
+      const app = createApp(App);
+      app.mount("#app");
     </script>
-</body>
-
+  </body>
 </html>

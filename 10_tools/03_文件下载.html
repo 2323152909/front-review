@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="btn">下载</button>
+    <script>
+      const btn = document.querySelector("#btn");
+      function downloadFile(data, name, exstension = "xlsx") {
+        const url = window.URL.createObjectURL(new Blob([data]));
+        const link = document.createElement("a");
+        link.style.display = "none";
+        link.href = url;
+        link.setAttribute("download", `${name}.${exstension}`);
+        link.click();
+      }
+
+      btn.addEventListener("click", () => {
+        downloadFile(
+          "https://xfdev2.oss-cn-hangzhou.aliyuncs.com/3/20220811/62f4c8ee3469f169f5cd1343",
+          "download"
+        );
+      });
+    </script>
+  </body>
+</html>
